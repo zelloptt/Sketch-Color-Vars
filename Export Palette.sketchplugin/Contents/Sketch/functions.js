@@ -34,6 +34,6 @@ var firstVisibleFill = function(layer) {
  */
 var writeFile = function(string, ext) {
   var output = [@"" stringByAppendingString:string];
-  var path = file_path + '_colors.' + ext;
+  var path = file_path + 'rawColors.' + ext;
   [output writeToFile:path atomically:true encoding:NSUTF8StringEncoding error:null]
 };

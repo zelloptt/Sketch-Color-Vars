@@ -3,20 +3,17 @@
 /** Variables
  ---------------------------------------------------------*/
 var app = NSApplication.sharedApplication();
-var header = '/*! Sketch-Color-Vars v1.3.1 | MIT License | github.com/philsinatra/Sketch-Color-Vars/ */';
 var file_path = '';
 var color_array = [];
-var str_scss = header + "\n";
-var str_less = header + "\n";
-var str_stylus = header + "\n";
-var str_css = header + "\n" + ":root {";
+var str_scss = "";
+var str_css = ":root {";
 
 var onRun = function(context) {
   log('test run again');
   var doc = context.document;
   var selectedLayers = context.selection;
   var selectedCount = selectedLayers.count();
-	var fileTypes = NSArray.arrayWithArray([@'scss',@'less',@'css',@'styl'])
+	var fileTypes = NSArray.arrayWithArray([@'scss',@'css'])
 	var panel = [NSOpenPanel openPanel];
   [panel setCanChooseDirectories:true];
   [panel setCanCreateDirectories:true];
@@ -51,9 +48,9 @@ var onRun = function(context) {
 
       color_array = color.split(" ");
 
-      var red = Math.round(color_array[0] * 100) + '%';
-      var green = Math.round(color_array[1] * 100) + '%';
-      var blue = Math.round(color_array[2] * 100) + '%';
+      var red = Math.round(color_array[0] * 255);
+      var green = Math.round(color_array[1] * 255);
+      var blue = Math.round(color_array[2] * 255);
       var alpha = parseFloat(color_array[3]).toFixed(2);
       var rgbaValues = red + "," + green + "," + blue + "," + alpha;
 
@@ -61,17 +58,6 @@ var onRun = function(context) {
       str_scss += rgbaValues;
       str_scss += "); ";
       str_scss += "\n";
-
-      str_less += "@" + layer_name + ": rgba(";
-      str_less += rgbaValues;
-      str_less += "); ";
-      str_less += "\n";
-
-      str_stylus += "$";
-      str_stylus += layer_name + " = rgba(";
-      str_stylus += rgbaValues;
-      str_stylus += "); ";
-      str_stylus += "\n";
 
       str_css += "\n";
       str_css += "  --" + layer_name + ": rgba(";
@@ -83,8 +69,6 @@ var onRun = function(context) {
 
 	var output = [
 		[str_scss, 'scss'],
-		[str_less, 'less'],
-    [str_stylus, 'styl'],
 		[str_css, 'css']
 	];
 
@@ -92,6 +76,6 @@ var onRun = function(context) {
 		writeFile(output[z][0], output[z][1]);
 	}
 
-	var alertMessage = '_colors.scss | less | stylus | css saved to: ' + file_path;
-  alert('Color Variables Exported!', alertMessage);
+	var alertMessage = 'rawColors.scss | css saved to: ' + file_path;
+  alert('Color Exported!', alertMessage);
 };
