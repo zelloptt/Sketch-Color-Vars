@@ -14,7 +14,7 @@
 	"commands": [
 		{
 			"script": "androidcolors.cocoascript",
-			"shortcut": "shift cmd 0",
+			"shortcut": "shift cmd 9",
 			"name": "Export for Android",
 			"handlers": {
 				"run": "onRun"
@@ -22,29 +22,29 @@
 			"identifier": "androidcolors"
 		},
 		{
-			"script": "iOScolors.cocoascript",
-			"shortcut": "shift cmd -",
-			"name": "Export for iOS",
-			"handlers": {
-				"run": "onRun"
-			},
-			"identifier": "iOScolors"
-		},
-		{
 			"script": "webcolors.cocoascript",
-			"shortcut": "shift cmd =",
+			"shortcut": "shift cmd -",
 			"name": "Export for Web",
 			"handlers": {
 				"run": "onRun"
 			},
 			"identifier": "webcolors"
+		},
+		{
+			"script": "csvcolors.cocoascript",
+			"shortcut": "shift cmd =",
+			"name": "Export to CSV",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "csvcolors"
 		}
 	],
 	"menu": {
 		"items": [
 			"androidcolors",
-			"iOScolors",
-			"webcolors"
+			"webcolors",
+			"csvcolors"
 		],
 		"title": "Export Colors"
 	}
