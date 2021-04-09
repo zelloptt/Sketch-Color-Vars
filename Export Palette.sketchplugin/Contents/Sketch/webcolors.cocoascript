@@ -37,7 +37,9 @@ var onRun = function(context) {
     for (var i = 0; i < selectedCount; i++) {
       var layer = selectedLayers[i];
       var layer_name = layer.name();
-      var color = String(firstVisibleFill(layer).color());
+      var seed = firstVisibleFill(layer).color();
+      var color = String(seed);
+      var hex = String(seed.immutableModelObject().hexValue());
 
       color = color.replace('r:', '');
       color = color.replace('g:', '');
@@ -53,16 +55,20 @@ var onRun = function(context) {
       var blue = Math.round(color_array[2] * 255);
       var alpha = parseFloat(color_array[3]).toFixed(2);
       var rgbaValues = red + "," + green + "," + blue + "," + alpha;
-
-      str_scss += "$" + layer_name + ": rgba(";
-      str_scss += rgbaValues;
-      str_scss += "); ";
+      var isrgba = alpha === '1.00';
+      if (isrgba) {
+        var hexcode = '#' + hex + ';';
+      } else {
+        var rgba = 'rgba(' + rgbaValues + '); ';
+      }
+      
+      str_scss += "$cR-" + layer_name + ": ";
+      str_scss += isrgba ? hexcode : rgba;
       str_scss += "\n";
 
       str_css += "\n";
-      str_css += "  --" + layer_name + ": rgba(";
-      str_css += rgbaValues;
-      str_css += "); ";
+      str_css += "  --cR-" + layer_name + ": ";
+      str_css += isrgba ? hexcode : rgba;
     }
   }
   str_css += "\n}";
