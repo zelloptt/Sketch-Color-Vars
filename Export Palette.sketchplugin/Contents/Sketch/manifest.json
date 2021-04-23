@@ -3,13 +3,13 @@
 	"description": "Exports your Sketch palette as rgb(a) to CSS, SCSS, uiColor, and XML",
 	"author": "Wil Nichols",
 	"authorEmail": "wil@zello.com",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"identifier": "com.sketch.export-palette",
 	"bugs": {
 		"url": "https://github.com/wilnichols/Sketch-Color-Vars/issues"
 	},
-	"homepage": "https://github.com/wilnichols/Sketch-Color-Vars",
-	"appcast": "https://raw.githubusercontent.com/wilnichols/Sketch-Color-Vars/master/appcast.xml",
+	"homepage": "https://github.com/zelloptt/Sketch-Color-Vars",
+	"appcast": "https://raw.githubusercontent.com/zelloptt/Sketch-Color-Vars/master/appcast.xml",
 	"license": "MIT",
 	"commands": [
 		{
