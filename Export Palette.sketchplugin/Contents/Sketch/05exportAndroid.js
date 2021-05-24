@@ -1,24 +1,22 @@
-@import "functions.js"
+@import "00functions.js"
 
 /** Variables
  ---------------------------------------------------------*/
 var app = NSApplication.sharedApplication()
 var file_path = '';
 var color_array = [];
-var str_no = '<?xml version="1.0" encoding="utf-8"?>' + '\n' + '<resources>'+ '\n';
-var str_csv = ',R,G,B' + '\n' + ',0,0,0'+ '\n' + ',255,255,255'+ '\n' + ',,,'+ '\n';
-
+var str_xml = '<?xml version="1.0" encoding="utf-8"?>' + '\n' + '<resources>'+ '\n';
 
 var onRun = function(context) {
   log('test run again');
   var doc = context.document;
   var selectedLayers = context.selection;
   var selectedCount = selectedLayers.count();
-  var fileTypes = NSArray.arrayWithArray([@'xml'])
-  var panel = [NSOpenPanel openPanel];
+	var fileTypes = NSArray.arrayWithArray([@'xml'])
+	var panel = [NSOpenPanel openPanel];
   [panel setCanChooseDirectories:true];
   [panel setCanCreateDirectories:true];
-  [panel setAllowedFileTypes:fileTypes];
+	[panel setAllowedFileTypes:fileTypes];
   panel.setPrompt('Export Color Variables');
 
   var clicked = [panel runModal];
@@ -33,7 +31,7 @@ var onRun = function(context) {
   }
 
   if (selectedCount == 0) {
-    doc.showMessage('Please selected at least one layer.');
+    sketch.UI.message('􀒊 Please select at least one layer.')
   } else {
     for (var i = 0; i < selectedCount; i++) {
       var layer = selectedLayers[i];
@@ -51,25 +49,25 @@ var onRun = function(context) {
       
       color_array = color.split(" ");
       
-      var red = Math.round(color_array[0] * 255);
-      var green = Math.round(color_array[1] * 255);
-      var blue = Math.round(color_array[2] * 255);
-      var alpha = parseFloat(color_array[3]).toFixed(2);
-      var rgbaValues = red + "," + green + "," + blue + "," + alpha;
+      var alpha = ((parseFloat(color_array[3]) * 255) | 1 << 8).toString(16).slice(1);
+      var alphahex = hex + alpha;
 
-      str_csv += ',' + layer_name + ',' + red  + ',' + green + ',' + blue + ',' + alpha;
-      str_csv += "\n";
+      str_xml += '  <color name="' + layer_name + '">#';
+      str_xml += alphahex;
+      str_xml += "</color>";
+      str_xml += "\n";
     }
   }
+  str_xml += "</resources>";
 
-  var output = [
-    [str_csv, 'csv'],
-  ];
+	var output = [
+		[str_xml, 'xml'],
+	];
 
-  for (z = 0; z < output.length; z++) {
-    writeFile(output[z][0], output[z][1]);
-  }
+	for (z = 0; z < output.length; z++) {
+		writeFile(output[z][0], output[z][1]);
+	}
 
-  var alertMessage = 'rawColors.csv saved to: ' + file_path;
+	var alertMessage = 'rawColors.xml saved to: ' + file_path;
   alert('Colors Exported!', alertMessage);
 };

@@ -3,48 +3,170 @@
 	"description": "Exports your Sketch palette as rgb(a) to CSS, SCSS, uiColor, and XML",
 	"author": "Wil Nichols",
 	"authorEmail": "wil@zello.com",
-	"version": "0.0.1",
+	"version": "0.0.0",
 	"identifier": "com.sketch.export-palette",
 	"bugs": {
 		"url": "https://github.com/wilnichols/Sketch-Color-Vars/issues"
 	},
-	"homepage": "https://github.com/zelloptt/Sketch-Color-Vars",
-	"appcast": "https://raw.githubusercontent.com/zelloptt/Sketch-Color-Vars/master/appcast.xml",
+	"homepage": "https://github.com/wilnichols/Sketch-Color-Vars",
+	"appcast": "https://raw.githubusercontent.com/wilnichols/Sketch-Color-Vars/master/appcast.xml",
 	"license": "MIT",
 	"commands": [
 		{
-			"script": "androidcolors.cocoascript",
-			"shortcut": "shift cmd 9",
+			"script": "01generateSwatches.js",
+			"shortcut": "",
+			"name": "Generate Swatches from Selection",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "generateSwatches"
+		},
+		{
+			"script": "02ceiling.js",
+			"shortcut": "",
+			"name": "Lower Ceiling",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "ceilingLower"
+		},
+		{
+			"script": "02ceiling.js",
+			"shortcut": "",
+			"name": "Modify Ceiling",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "ceilingLower"
+		},
+		{
+			"script": "03floor.js",
+			"shortcut": "",
+			"name": "Modify Floor",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "floorRaise"
+		},
+		{
+			"script": "04opacify.js",
+			"shortcut": "",
+			"name": "Opacify",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "opacify"
+		},
+		{
+			"script": "05exportAndroid.js",
+			"shortcut": "",
 			"name": "Export for Android",
 			"handlers": {
 				"run": "onRun"
 			},
-			"identifier": "androidcolors"
+			"identifier": "exportAndroid"
 		},
 		{
-			"script": "webcolors.cocoascript",
-			"shortcut": "shift cmd -",
-			"name": "Export for Web",
+			"script": "06exportiOS.js",
+			"shortcut": "",
+			"name": "Export for iOS",
 			"handlers": {
 				"run": "onRun"
 			},
-			"identifier": "webcolors"
+			"identifier": "exportiOS"
 		},
 		{
-			"script": "csvcolors.cocoascript",
-			"shortcut": "shift cmd =",
-			"name": "Export to CSV",
+			"script": "07exportSCSS.js",
+			"shortcut": "",
+			"name": "Export SCSS",
 			"handlers": {
 				"run": "onRun"
 			},
-			"identifier": "csvcolors"
+			"identifier": "exportSCSS"
+		},
+		{
+			"script": "08exportCSS.js",
+			"shortcut": "",
+			"name": "Export CSS",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "exportCSS"
+		},
+		{
+			"script": "09exportJSON.js",
+			"shortcut": "",
+			"name": "Export JSON",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "exportJSON"
+		},
+		{
+			"script": "10exportCSV.js",
+			"shortcut": "",
+			"name": "Export CSV",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "exportCSV"
+		},
+		{
+			"script": "11LogSwatchNameArray.js",
+			"shortcut": "",
+			"name": "Log Swatch Name Array",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "logSwatchNameArray"
+		},
+		{
+			"script": "12LogSwatchNameStrings.js",
+			"shortcut": "",
+			"name": "Log Swatch Name Strings",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "logSwatchNameStrings"
+		},
+		{
+			"script": "13LogSwatchObject.js",
+			"shortcut": "",
+			"name": "Log Swatch Object",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "logSwatchObject"
+		},
+		{
+			"script": "14LogStringifiedSwatchObject.js",
+			"shortcut": "",
+			"name": "Log Stringified Swatch Object",
+			"handlers": {
+				"run": "onRun"
+			},
+			"identifier": "logStringifiedSwatchObject"
 		}
 	],
 	"menu": {
 		"items": [
-			"androidcolors",
-			"webcolors",
-			"csvcolors"
+			"generateSwatches",
+			"-",
+			"ceilingLower",
+			"floorRaise",
+			"opacify",
+			"-",
+			"exportAndroid",
+			"exportiOS",
+			"exportSCSS",
+			"exportCSS",
+			"exportJSON",
+			"exportCSV",
+			"-",
+			"logSwatchNameArray",
+			"logSwatchNameStrings",
+			"logSwatchObject",
+			"logStringifiedSwatchObject"
 		],
 		"title": "Export Colors"
 	}
