@@ -31,7 +31,7 @@ var onRun = function(context) {
   }
 
   if (selectedCount == 0) {
-    doc.showMessage('Please selected at least one layer.');
+    sketch.UI.message('􀒊 Please select at least one layer.')
   } else {
     for (var i = 0; i < selectedCount; i++) {
       var layer = selectedLayers[i];

@@ -37,3 +37,40 @@ var writeFile = function(string, ext) {
   var path = file_path + 'rawColors.' + ext;
   [output writeToFile:path atomically:true encoding:NSUTF8StringEncoding error:null]
 };
+
+var filterArray = function(array) {
+  var filteredArray = [];
+  
+  // Loop through array values
+  for(i=0; i < array.length; i++){
+      if(filteredArray.indexOf(array[i]) === -1) {
+          filteredArray.push(array[i]);
+      }
+  }
+  return filteredArray;
+};
+
+var transformArray = function(artboardNames) {
+
+  var result = {
+    colorRaw: {}
+  };
+  for (let i = 0; i < input.length; i++) {
+    const line = input[i];
+    const path = line.split('/');
+    path[1] = path[1].split('')[0];
+    if (result['colorRaw'][path[0]] === undefined) {
+      result['colorRaw'][path[0]] = {};
+    }
+
+    if (result['colorRaw'][path[0]][path[1]] === undefined) {
+      result['colorRaw'][path[0]][path[1]] = {};
+    }
+
+    if (result['colorRaw'][path[0]][path[1]][path[2]] === undefined) {
+      result['colorRaw'][path[0]][path[1]][path[2]] = path[3];
+    }
+  }
+
+  return result;
+};
