@@ -1,12 +1,13 @@
-@import "functions.js"
+@import "00functions.js"
 
 /** Variables
  ---------------------------------------------------------*/
 var app = NSApplication.sharedApplication();
+var header = '/*! Sketch-Color-Vars v1.3.1 | MIT License | github.com/philsinatra/Sketch-Color-Vars/ */';
 var file_path = '';
 var color_array = [];
-var str_scss = "";
-var str_css = ":root {";
+var str_scss = header + "\n";
+var str_css = header + "\n" + ":root {";
 
 var onRun = function(context) {
   log('test run again');
@@ -37,9 +38,7 @@ var onRun = function(context) {
     for (var i = 0; i < selectedCount; i++) {
       var layer = selectedLayers[i];
       var layer_name = layer.name();
-      var seed = firstVisibleFill(layer).color();
-      var color = String(seed);
-      var hex = String(seed.immutableModelObject().hexValue());
+      var color = String(firstVisibleFill(layer).color());
 
       color = color.replace('r:', '');
       color = color.replace('g:', '');
@@ -55,20 +54,16 @@ var onRun = function(context) {
       var blue = Math.round(color_array[2] * 255);
       var alpha = parseFloat(color_array[3]).toFixed(2);
       var rgbaValues = red + "," + green + "," + blue + "," + alpha;
-      var isrgba = alpha === '1.00';
-      if (isrgba) {
-        var hexcode = '#' + hex + ';';
-      } else {
-        var rgba = 'rgba(' + rgbaValues + '); ';
-      }
-      
-      str_scss += "$cR-" + layer_name + ": ";
-      str_scss += isrgba ? hexcode : rgba;
+
+      str_scss += "$" + layer_name + ": rgba(";
+      str_scss += rgbaValues;
+      str_scss += "); ";
       str_scss += "\n";
 
       str_css += "\n";
-      str_css += "  --cR-" + layer_name + ": ";
-      str_css += isrgba ? hexcode : rgba;
+      str_css += "  --" + layer_name + ": rgba(";
+      str_css += rgbaValues;
+      str_css += "); ";
     }
   }
   str_css += "\n}";
@@ -83,5 +78,5 @@ var onRun = function(context) {
 	}
 
 	var alertMessage = 'rawColors.scss | css saved to: ' + file_path;
-  alert('Color Exported!', alertMessage);
+  alert('Color Variables Exported!', alertMessage);
 };
