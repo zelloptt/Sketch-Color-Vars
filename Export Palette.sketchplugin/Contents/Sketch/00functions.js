@@ -55,8 +55,8 @@ var transformArray = function(artboardNames) {
   var result = {
     colorRaw: {}
   };
-  for (let i = 0; i < input.length; i++) {
-    const line = input[i];
+  for (let i = 0; i < artboardNames.length; i++) {
+    const line = artboardNames[i];
     const path = line.split('/');
     path[1] = path[1].split('')[0];
     if (result['colorRaw'][path[0]] === undefined) {

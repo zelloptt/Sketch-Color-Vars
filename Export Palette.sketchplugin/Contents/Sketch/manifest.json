@@ -22,16 +22,16 @@
 			"identifier": "generateSwatches"
 		},
 		{
-			"script": "02ceiling.js",
+			"script": "02generateStyles.js",
 			"shortcut": "",
-			"name": "Lower Ceiling",
+			"name": "Generate Styles",
 			"handlers": {
 				"run": "onRun"
 			},
-			"identifier": "ceilingLower"
+			"identifier": "generateStyles"
 		},
 		{
-			"script": "02ceiling.js",
+			"script": "03ceiling.js",
 			"shortcut": "",
 			"name": "Modify Ceiling",
 			"handlers": {
@@ -40,7 +40,7 @@
 			"identifier": "ceilingLower"
 		},
 		{
-			"script": "03floor.js",
+			"script": "04floor.js",
 			"shortcut": "",
 			"name": "Modify Floor",
 			"handlers": {
@@ -49,7 +49,7 @@
 			"identifier": "floorRaise"
 		},
 		{
-			"script": "04opacify.js",
+			"script": "05opacify.js",
 			"shortcut": "",
 			"name": "Opacify",
 			"handlers": {
@@ -58,7 +58,7 @@
 			"identifier": "opacify"
 		},
 		{
-			"script": "05exportAndroid.js",
+			"script": "06exportAndroid.js",
 			"shortcut": "",
 			"name": "Export for Android",
 			"handlers": {
@@ -67,7 +67,7 @@
 			"identifier": "exportAndroid"
 		},
 		{
-			"script": "06exportiOS.js",
+			"script": "07exportiOS.js",
 			"shortcut": "",
 			"name": "Export for iOS",
 			"handlers": {
@@ -76,7 +76,7 @@
 			"identifier": "exportiOS"
 		},
 		{
-			"script": "07exportSCSS.js",
+			"script": "08exportSCSS.js",
 			"shortcut": "",
 			"name": "Export SCSS",
 			"handlers": {
@@ -85,7 +85,7 @@
 			"identifier": "exportSCSS"
 		},
 		{
-			"script": "08exportCSS.js",
+			"script": "09exportCSS.js",
 			"shortcut": "",
 			"name": "Export CSS",
 			"handlers": {
@@ -94,7 +94,7 @@
 			"identifier": "exportCSS"
 		},
 		{
-			"script": "09exportJSON.js",
+			"script": "10exportJSON.js",
 			"shortcut": "",
 			"name": "Export JSON",
 			"handlers": {
@@ -103,7 +103,7 @@
 			"identifier": "exportJSON"
 		},
 		{
-			"script": "10exportCSV.js",
+			"script": "11exportCSV.js",
 			"shortcut": "",
 			"name": "Export CSV",
 			"handlers": {
@@ -112,7 +112,7 @@
 			"identifier": "exportCSV"
 		},
 		{
-			"script": "11LogSwatchNameArray.js",
+			"script": "12LogSwatchNameArray.js",
 			"shortcut": "",
 			"name": "Log Swatch Name Array",
 			"handlers": {
@@ -121,7 +121,7 @@
 			"identifier": "logSwatchNameArray"
 		},
 		{
-			"script": "12LogSwatchNameStrings.js",
+			"script": "13LogSwatchNameStrings.js",
 			"shortcut": "",
 			"name": "Log Swatch Name Strings",
 			"handlers": {
@@ -130,7 +130,7 @@
 			"identifier": "logSwatchNameStrings"
 		},
 		{
-			"script": "13LogSwatchObject.js",
+			"script": "14LogSwatchObject.js",
 			"shortcut": "",
 			"name": "Log Swatch Object",
 			"handlers": {
@@ -139,7 +139,7 @@
 			"identifier": "logSwatchObject"
 		},
 		{
-			"script": "14LogStringifiedSwatchObject.js",
+			"script": "15LogStringifiedSwatchObject.js",
 			"shortcut": "",
 			"name": "Log Stringified Swatch Object",
 			"handlers": {
@@ -151,6 +151,7 @@
 	"menu": {
 		"items": [
 			"generateSwatches",
+			"generateStyles",
 			"-",
 			"ceilingLower",
 			"floorRaise",

@@ -1,4 +1,4 @@
-@import "functions.js"
+@import "00functions.js"
 
 /** Variables
  ---------------------------------------------------------*/
@@ -34,7 +34,7 @@ var onRun = function(context) {
     sketch.UI.message('􀒊 Please select at least one layer.')
   } else {
     // returns colors
-    var set_array = [];
+    var artboardNames = [];
     for (var i = 0; i < selectedCount; i++) {
       var layer = selectedLayers[i];
       var set_name = layer.parentArtboard().name();
@@ -69,13 +69,12 @@ var onRun = function(context) {
       // returns color name in a Set/Color+Modifier/Stop format
       layer_name = set_name + '/' + layer_name.match(/[a-z]+|[^a-z]+/gi).toString().replace(',', '/') + '/' + colorCode;
       // creates array of path-formatted color names
-      set_array.push(layer_name);
+      artboardNames.push(layer_name);
       // empty object
     }
     
-    var artboardNames = filterArray(set_array);
-    console.log(transformArray(artboardNames));
-   
+    console.log(artboardNames);
+    
     
   }
   str_map = JSON.stringify(artboardNames);
